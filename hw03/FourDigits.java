@@ -20,9 +20,10 @@ public class FourDigits {       //creates a class
         System.out.println("Enter a double and I display the four digits to the right of the decimal point :");
         double numberedEntered=myScanner.nextDouble();
         
+        String padded=String.format("%04d",(int) (numberedEntered*10000)%10000);
         
         //prints out digits to the left of the decimal place.
-        System.out.println("The four digits are "+ (int) (numberedEntered*10000)%10000);
+        System.out.println("The four digits are "+ padded);
         
     }
 }
