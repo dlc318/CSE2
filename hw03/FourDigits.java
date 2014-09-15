@@ -20,6 +20,7 @@ public class FourDigits {       //creates a class
         System.out.println("Enter a double and I display the four digits to the right of the decimal point :");
         double numberedEntered=myScanner.nextDouble();
         
+        //places zeros in the beginning when needed
         String padded=String.format("%04d",(int) (numberedEntered*10000)%10000);
         
         //prints out digits to the left of the decimal place.
