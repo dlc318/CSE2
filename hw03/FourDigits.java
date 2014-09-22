@@ -21,10 +21,10 @@ public class FourDigits {       //creates a class
         double numberedEntered=myScanner.nextDouble();
         
         //places zeros in the beginning when needed
-        String padded=String.format("%04d",(int) (numberedEntered*10000)%10000);
+        String digits=String.format("%04d",(int) (numberedEntered*10000)%10000);
         
         //prints out digits to the left of the decimal place.
-        System.out.println("The four digits are "+ padded);
+        System.out.println("The four digits are "+ digits);
         
     }
 }
