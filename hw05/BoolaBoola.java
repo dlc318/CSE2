@@ -47,11 +47,27 @@ public class BoolaBoola{    //creates public class
                                 System.out.println("Wrong; try again");//notifies user of wrong answer
                                 return;//leaves the program
                         }//ends first else statement 
-               
-                }    
-            }//ends second if statement 
-        }//ends first if statement
+                }
         
+            }//ends second if statement 
+            else{
+                if(myScanner.hasNext()){    //if user enters a String
+                    answer=myScanner.next();    //sets answer equal to user input
+                
+                        if(answer.equals("f") || answer.equals("F")){//third if statement     //if user enters correct answer
+                            
+                                System.out.println("Correct");
+                                return;//leaves the program
+                        }//ends third if statement
+                        
+                        else{//first else statement     //when user does not enter correct anwer
+                              
+                                System.out.println("Wrong; try again");//notifies user of wrong answer
+                                return;//leaves the program
+                        }//ends first else statement 
+            }
+        }//ends first if statement
+        }
         
         if(value4==2 && value5==2){//fourth if statement    //with two || operators
         
@@ -79,6 +95,25 @@ public class BoolaBoola{    //creates public class
                     
                 }    
             }//ends fifth if statement 
+            else{
+                if(myScanner.hasNext()){    //if user enters string
+                    answer=myScanner.next();    //sets answer equal to user input
+                
+                    if(answer.equals("f") || answer.equals("F")){//sixth if statement     //if user enters correct answer
+                        
+                            System.out.println("Correct");
+                            return;//leaves the program
+                    }//ends sixth if statement
+                    
+                    else{//second else statement     //when user does not enter correct anwer
+                          
+                            System.out.println("Wrong; try again");//notifies user of wrong answer
+                            return;//leaves the program
+                    }//ends second else statement 
+            
+                    
+                }   
+            }
         }//ends fourth if statement
             
             
@@ -108,8 +143,24 @@ public class BoolaBoola{    //creates public class
                     
                 }    
             }//ends eight if statement 
+            else{
+                if(myScanner.hasNext()){    //if user enters a string
+                    answer=myScanner.next();    //sets scanner equal to user input
+                
+                    if(answer.equals("f") || answer.equals("F")){//ninth if statement     //if user enters correct answer
+                        
+                            System.out.println("Correct");
+                            return;//leaves the program
+                    }//ends ninth if statement
+                    
+                    else{//third else statement     //when user does not enter correct anwer
+                          
+                            System.out.println("Wrong; try again");//notifies user of wrong answer
+                            return;//leaves the program
+                    }//ends third else statement 
+            }
         }//ends seventh if statement    
-            
+        }    
         
         if(value4==2 && value5==1){//tenth if statement    //with one && and one || operator
         
@@ -136,9 +187,23 @@ public class BoolaBoola{    //creates public class
                 
                 }
             }//ends eleventh if statement 
+            else{
+                if(myScanner.hasNext()){    //if user equals string
+                    answer=myScanner.next();    //sets scanner equal to user input
+                
+                    if(answer.equals("t") || answer.equals("T")){//twelfth if statement     //if user enters correct answer
+                        
+                            System.out.println("Correct");
+                            return;//leaves the program
+                    }//ends twelfth if statement
+                    
+                    else{//fourth else statement     //when user does not enter correct anwer
+                          
+                            System.out.println("Wrong; try again");//notifies user of wrong answer
+                            return;//leaves the program
+                    }//ends fourth else statement 
+            }
         }//ends tenth if statement
-        
-            
-        
+        }
     }//ends main method
 }//ends public class
