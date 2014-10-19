@@ -1,0 +1,58 @@
+Program Write a program that forces the user to enter an integer between 1 and 9, inclusive, and then prints out displays that depend on the value entered and look like the following: 
+               Enter a number between 1 and 9- 4
+ 
+Using for loops:
+    1
+    -
+   222
+   222
+   ---
+  33333
+  33333
+  33333
+  -----
+ 4444444
+ 4444444
+ 4444444
+ 4444444
+ -------
+Using while loops:
+    1
+    -
+   222
+   222
+   ---
+  33333
+  33333
+  33333
+  -----
+ 4444444
+ 4444444
+ 4444444
+ 4444444
+ -------
+Using do-while loops:
+    1
+    -
+   222
+   222
+   ---
+  33333
+  33333
+  33333
+  -----
+ 4444444
+ 4444444
+ 4444444
+ 4444444
+ -------
+
+You should use loops to create each of the three stacks of number. The first stack should be created only using for loops. 
+The second stack should be created only using while loops. The third stack should be created only using do-while loops. 
+Start by writing a program that prints the first stack and get it running. Then it is straightforward to modify a copy of 
+that code (which uses for loops) to write code that uses only while loops. Once you have code that generates the top two 
+stacks you can easily modify the code to generate the third diamond that only uses do-while loops.
+
+Note 1. Most of the work on this assignment involves writing code to produce the first stack.  It is best not to fuss too 
+much over the precise details of the for loops. Instead, make a stab at getting it right and then try it out. You can then 
+fiddle with your code to get it exactly right.
