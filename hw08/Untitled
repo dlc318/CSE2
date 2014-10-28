@@ -1,0 +1,183 @@
+CSE 002: Fundamentals of Programming
+Fall 2014
+Homework Assignment 8: Driver Program
+
+Objectives.  This homework has the objective of giving you practice in writing methods, overloading methods, and in forcing the user to enter good input. 
+
+You may find it helpful to work through the check point questions embedded in the chapter, and to practice on homework problems from the text that we have 
+not assigned.  Note that solutions to the even-numbered problems are available on the book’s student resource website as described on page xii.
+
+Note that homework is checked for evidence of plagiarism.  Academic dishonesty carries a tremendous penalty, and offenders will be caught.
+
+Background Driver programs are used to test out the functionality of methods before using the methods in a full-blown program.
+Program In the program below I call on three different overloaded versions of getInput(). (Overloaded methods are two or more methods that have the same name 
+but that take different numbers or types of parameters). You should add the definitions of the methods so that the program would produce the output (for the 
+corresponding input) shown below the program. Calls like getInput(scan,”dEf”) should force the user to enter a string from the keyboard that is exactly one 
+character long and that is one of the characters in the string “dEf”, and it should return the character entered. Calls like getInput(scan,”abc”,7) should try 
+to force the user to enter a string that consists of exactly one character and is one of the characters in the string “abc”, and it should return the character 
+entered, but it should give up and return the character ‘ ‘ if the user fails to enter one of the required characters after 7 attempts. Calls like 
+getInput(scan,”Prompt: “,”059”) should use the string “Prompt: “, should force the user to enter a string with exactly one character that is one of the characters 
+in the string “059”, and should return the character entered.  The phrase “force the user” means that the program should repeatedly prompt the user until the user 
+enters the correct input. The output of your program should be very much the same as the illustrative output below.
+
+import java.util.Scanner;
+public class HW8{
+  public static void main(String []arg){
+	char input;
+	Scanner scan=new Scanner(System.in);
+	System.out.print("Enter 'C' or 'c' to continue, anything else to quit- ");
+	input=getInput(scan,"Cc");
+	System.out.println("You entered '"+input+"'");
+	System.out.print("Enter 'y', 'Y', 'n', or 'N'- ");
+	input=getInput(scan,"yYnN",5); //give up after 5 attempts
+	if(input!=' '){
+   	System.out.println("You entered '"+input+"'");
+	}
+	input=getInput(scan,"Choose a digit.","0123456789");
+	System.out.println("You entered '"+input+"'");
+  }  
+}
+SAMPLE RUNS:
+Enter 'C' or 'c' to continue, anything else to quit- 7
+You did not enter a character from the list 'Cc'; try again- ths
+You should enter exactly one character- c
+You entered 'c'
+Enter 'y', 'Y', 'n', or 'N'- r
+You did not enter a character from the list 'yYnN'; try again- r
+You did not enter a character from the list 'yYnN'; try again- r
+You did not enter a character from the list 'yYnN'; try again- r
+You did not enter a character from the list 'yYnN'; try again- r
+You did not enter a character from the list 'yYnN'; try again-
+You failed after 5 tries
+Choose a digit.
+Enter one of: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'- yu
+Enter exactly one character
+Choose a digit.
+Enter one of: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'- u
+You did not enter an acceptable character
+Choose a digit.
+Enter one of: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'- 2
+You entered '2’
+-----------------------
+Enter 'C' or 'c' to continue, anything else to quit- c
+You entered 'c'
+Enter 'y', 'Y', 'n', or 'N'- N
+You entered 'N'
+Choose a digit.
+Enter one of: '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'- 9
+You entered '9’
+
+Note 1. I have stored a copy of the above program on CourseSite(™). Start by copying and pasting it into the Cloud9(™) editor.
+Note 2. I did not document the code. That is your job. My lack of documentation should make it clear why documentation is important. 
+        My excuse for not providing documentation? You need practice in reading code. My reason for not providing documentation? I am lazy.
+Note 3. Remember that the definitions of your methods belong inside the class HW8 but outside the method main().
+Note 4. We give an example of overloading the function name max(). Both could be defined in the same class:
+   public static int max(int a, int b){
+       if(a>b)
+         return a;
+       return b;
+   }
+   
+   public static int max(int a, int b, int c, int d){
+        return max(max(a,b), max(c,d));
+   }
+Hints: 
+(1) Recall the Scanner method next(), which reads the next string of characters from the keyboard.
+(2) The code for the two-parameter version of getInput() can be greatly simplified by having it call one of the three-parameter versions with an outrageously large int.
+(3) To access the nth character of an instance of String, use the String method charAt(). Below is some code that illustrates the use of charAt(), 
+    and below the code is the output of the code when executed. (charAt(0) returns the first character, charAt(1) returns the second character, etc. )
+    
+    String a,b="This is a test string";
+	int loc;
+	a="";
+	loc=0;
+	while(loc<b.length() && b.charAt(loc)!=' '){
+  	a+=b.charAt(loc);
+  	loc++;
+	}
+	System.out.println("The first word in '"+b+"' is '"+a+"'");
+	a="";
+	for(int pos=b.length();pos>0;pos--){
+  	a+=b.charAt(pos-1);
+	}
+	System.out.println("The reverse of '"+b+"' is '"+a+"'");
+The first word in 'This is a test string' is 'This'
+The reverse of 'This is a test string' is 'gnirts tset a si sihT'
+
+
+On Homework Submission.  Store the file HW8.java in the Cloud9 directory hw08.  Note that any variation in the name of the directory or the names of the files will result in a file that is not submitted.  Avoid this error to avoid accidentally late homework submissions.  This homework is due 28 October at 11pm.  As usual, late collections will occur on the two following nights.
+
+
+
+
+
+
+
+/*
+		string=scan
+		letter=input.charat()
+		
+		ifinput.length() !=1{
+			Sysetm.out.print (one letter)
+			letter = getInput(x, letters)
+			return letter
+		}
+		
+		if(letter =='c' ){
+			return letter;
+		}
+		else{
+			System.out.print(You did not enter a character form list )
+			letter = getInput(scan, letters);
+			return letter;
+		}
+		
+		
+		
+		
+		int loc=1;
+		letters=x.next();
+		char ch=' ';
+		
+		if(letters.length() > loc){	//if user enters more than one character
+			x.next();
+			System.out.print("You should enter exactly one character- ");
+			
+		}
+		else if(letters.length() == loc){	//if user enters one character
+			ch=x.next().charAt(0);
+		}
+		
+		return ch;	//returns the character the user entered
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		  public static char getInput(Scanner x, String letters){	//creates first getInput method to enter 'C' or 'c'
+		
+				letters=x.next();
+				char ch=letters.charAt(0);
+				
+				if(letters.length() != 1){	//when user enters more than one character
+					System.out.print("You should enter exactly one character- ");
+					ch=getInput(x, letters);	//runs the same method again
+					return ch;
+				}
+				if(ch == 'c' || ch == 'C'){	//when user enters 'c' or 'C'
+					return ch;
+				}
+				else{	//when user does not enter 'c' or 'C'
+					System.out.print("You did not enter a character from the list 'Cc'; try again- ");
+					ch=getInput(x, letters);	//runs the same method again
+					return ch;
+				}
+			
+	  }//ends getInput method
