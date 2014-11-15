@@ -68,7 +68,7 @@ public class BlockedAgain{  //creates public class
         }
         return number;
     }//ends checkRange method
-    
+       
     public static int allBlocks(int x){ //creates allBlocks method
         int answer;
         

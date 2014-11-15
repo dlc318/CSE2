@@ -1,0 +1,73 @@
+Objectives This lab session gives you practice with elementary array operations and passing arrays to and from methods.
+
+Background. Having the ability to perform  various arithmetic operations facilitates the writing of many applications. 
+For example, in statistics you can express various tests in terms of arithmetic operations on data stored in arrays. 
+
+Program. The program below calls two methods that are among a number that could be written to perform arithmetic operations 
+on arrays: equals() and addArrays(). I have provided the method display(). Write the code for equals() and addArrays().  The 
+method equals() should take two arrays of integers as input and return true if and only if the two arrays are of the same 
+length and have the same values in the same locations. The method addArrays() should take two arrays of integers as input and 
+return a new array of integers whose entries are the sum of the entries at the corresponding indices of the input arrays 
+(i.e. result[2] = array1[2] + array2[2]). Below the program is the expected output of ArrayMath.
+
+public class ArrayMath{ //creates the public class
+    public static void main(String [] arg){   //creates the main method
+        double x[]={2.3, 3, 4, -2.1, 82, 23},   //creates first array with 6 elements
+        y[]={2.3, 3, 4, -2.1, 82, 23},    //creates second array with 6 elements that are equal to the first array
+        z[]={2.3, 13, 14},    //creates third array with 3 elements
+        w[]={2.3, 13, 14, 12},    //creates fourth array with 4 elements
+        v[],  //creates fifth array which is the sum of arrays x and y.
+        u[]={2.3, 12, 14};    //creates sixth array with 3 elements 
+        v=addArrays(x,y);   //calls for addArrays method
+        System.out.println(display(x)+" \n  + " + display(y) + "\n   = " +display(v));  //displays the sum of arrays x and y
+        System.out.println(display(x)+" \n  + " + display(z) + "\n   = " 
+                             +display(addArrays(x,z))); //displays the sum of arrays x and z.
+        System.out.println("It is " + equals(x,y)+" that "+display(x)+
+                           " == "+display(y));  //displays that x and y are equal in length and corresponding elements
+        System.out.println("It is " + equals(z,w)+" that "+display(z)+
+                           " == "+display(w));  //displays that z and w are not equal in length and corresponding elements
+        System.out.println("It is " + equals(u,z)+" that "+display(u)+
+                           " == "+display(z));  //displays that u and z are not equal in length and corresponding elements
+        
+    } //ends main method
+    
+    public static String display(double [] x){    //creates display method. Displays the arrays' elements.
+        String out="{";
+        for(int j=0;j<x.length;j++){
+          if(j>0){
+            out+=", ";
+          }
+          out+=x[j];
+        }
+        return out+"}";
+    }//ends display method
+    
+    public static double[] addArrays(double[] first, double[] second) {
+        double sum[];
+        
+        for(int i = 0; i<first.length; i++) {
+            while(first.length<second.length && i=4){
+                second[4] = 0;
+            }
+            sum[i] = sum[first] + sum[second];
+        }
+        
+        return sum[];
+    }
+  
+}//ends public class
+
+//output:
+
+OUTPUT: {2.3, 3.0, 4.0, -2.1, 82.0, 23.0} 
+  + {2.3, 3.0, 4.0, -2.1, 82.0, 23.0}
+   = {4.6, 6.0, 8.0, -4.2, 164.0, 46.0}
+{2.3, 3.0, 4.0, -2.1, 82.0, 23.0} 
+  + {2.3, 13.0, 14.0}
+   = {4.6, 16.0, 18.0, -2.1, 82.0, 23.0}
+It is true that {2.3, 3.0, 4.0, -2.1, 82.0, 23.0}
+   == {2.3, 3.0, 4.0, -2.1, 82.0, 23.0}
+It is false that {2.3, 13.0, 14.0}
+   == {2.3, 13.0, 14.0, 12.0}
+It is false that {2.3, 12.0, 14.0}
+   == {2.3, 13.0, 14.0}

@@ -1,0 +1,125 @@
+Program 2. Poker is played with the usual deck of 52 cards, which has four suits, each suit 
+with “ranks” of either Ace, King, Queen, Jack, 10, 9, 8, 7, 6, 5, 4, 3, or 2. A poker hand 
+consists of five cards. A poker hand is said to have one pair if exactly two of the cards have 
+the same rank, e.g., the hand {A, A, Q, 3, 1} “has a pair”, while the hands {A, A, Q, Q, 2} 
+and {A, 7, 5, 3, 2} do not. Use the main method provided below and do not change it, then 
+write the methods showOneHand() and simulateOdds().
+
+The method showOneHand() should generate random poker hands, prompting the user if they would 
+like another hand to be generated (it will repeat as long the user desires). The method 
+simulateOdds() should randomly generate 10000 hands and count the number of times that a hand 
+with a pair of a specific rank occurs, along with the number of hands that do not have a pair. 
+Below the main program and the sample output that your methods should produce are important 
+notes for writing this program. 
+
+import java.util.Random;
+import java.util.Scanner;
+public class PokerOdds{
+  public static void main(String [] arg){
+    showHands();
+    simulateOdds();
+  }
+}
+
+Clubs:    J 4 
+Diamonds: 
+Hearts:   J 7 4 
+Spades:   
+
+Go again? Enter 'y' or 'Y', anything else to quit- y
+Clubs:    Q 2 
+Diamonds: A 
+Hearts:   5 
+Spades:   J 
+
+Go again? Enter 'y' or 'Y', anything else to quit- q
+  rank   freq of exactly one pair
+    A       312
+    K       307
+    Q       339
+    J       325
+   10       323
+    9       334
+    8       363
+    7       312
+    6       339
+    5       349
+    4       328
+    3       293
+    2       327
+----------------------------
+ total not exactly one pair: 5749
+
+Note 1. I did not document the code. That is your job. I am still being lazy.
+Note 2.  To randomly generate a poker hand, first assign a distinct number to each of the 
+52 cards, 0, 1, …, 51, representing the clubs with 0 for an Ace of clubs, 1 for a King of 
+clubs, 2 for a Queen, 3 for a Jack, 4 for a 10, 5 for a 9, .. 12 for the 2 of clubs.  The 
+diamonds should start with 13 (ace of diamonds) and end with 25 (2 of diamonds), the hearts 
+should start with with 26 (ace of hearts) and end with 38 (2 of hearts), and the spades start 
+with 39 (Ace of spades) and end with 51 (2 of spades). Under this scheme, if n is the number 
+of a random card, then n/13 returns the suit (0 = clubs, 1 = diamonds, …).  The expression 
+n%13 generates the rank (0 = ace, 1 = king, etc).  Now, to randomly draw five cards from a 
+deck of 52 cards, start with an array of 52 entries, where the entries are initialized to 0, 
+1, …, 51 respectively. That array represents the deck.  Represent the hand of cards with an 
+array of size 5, where each member of the array is initialized to -1.  Next, “draw” the first 
+card by generating a random number between 0 and 51 inclusive. Use that number as an index into 
+the array and store that number in the first array of the hand.  In the deck, set that position 
+in the array equal to -1, then swap the value of the array position you randomly selected (that 
+you just set to -1) with the last member of the deck array (initially the array member with 
+index 51).  That swap allows you to select the next random card by generating a random number 
+from 0 to 50 inclusive, and swapping the selected card again, etc, until you have drawn 5 cards.
+
+
+
+Before a select a card, the two arrays should look like this:
+===========================================
+Deck:
+[0][1][2][3][4][5][6].........................[51]
+Hand:
+[-1][-1][-1][-1][-1]
+===========================================
+
+After you draw a random card (in this case, suppose [2] was selected), the two arrays should look like this:
+===========================================
+Deck:
+[0][1][3][4][5][6].........................[51][-1]
+Hand:
+[2][-1][-1][-1][-1]
+===========================================
+
+Repeat the process of drawing a card 5 times total, each time reducing the effective size of the array by one 
+entry. For a small example, if I randomly drew 3 items from a deck of 10 cards, I would start with the array 
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9} and if the sequence of random indices generated is 5, 7, 5, the array would 
+look like (study this carefully.  Note that the total size of the deck is shrinking each time you swap.)
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9} 
+                            ---->(remove 5) {0, 1, 2, 3, 4, 9, 6, 7, 8, -1}  
+This puts deck[5] in the hand, and replace deck[5] with deck[9], 
+                            ---->(remove 7) {0, 1, 2, 3, 4, 9, 6, 8, -1, -1}  (replace 7 with entry[8])
+		This puts deck[7] in the hand, and replaces deck[7] with deck[8],
+                            ---->(remove 9) {0, 1, 2, 3, 4, 8, 6, -1, -1, -1}  (replace 9 with entry[7])
+		This puts deck[5] in the hand, and replaces deck[5] with deck[7],
+
+Note 3. In main() of FindDups I avoid excessive calls to System.out.println() by building the output string 
+“out” and occasionally printing it.
+
+Note 4. I use loops (no surprise) to display the lines of output for PokerOdds. To deal with the problem of 
+displaying the labels I avoided an ugly use of “if” or “switch” statements by putting  the labels in an array 
+of Strings and using the loop index to access the appropriate label. For example, below is some code and its 
+output demonstrating this technique.
+String labels[]={“How do”, ”you do”, “my name “, “is Sue”};
+for(int j=0;j<4;j++){ System.out.println(j+”: “+labels[j]) }
+
+0: How do
+1: you do
+2: my name
+3: is Sue
+ 
+Note 5. You should store the five cards drawn in an array, say “cards”, but you need only store the rank of 
+each card drawn (recall the use of %). Then you can use the method exactlyOneDup() from class FindDups to 
+determine whether the array has exactly one duplicate. Either cut and paste  the code for exactlyOneDup() or, 
+more simply, compile the class FindDups first. Then your class PokerOdds can make the call FindDups.exactlyOneDup(cards) 
+(in the same way you have been calling Math.random()).
+
+Note 6. The probability of dealing a pair of a particular rank at random is 0.0325, and the probability of dealing some 
+pair is 13x0.0325=0.4225. Thus, in 10000 deals, one would expect about 325 hands with a pair of some given rank and 
+about 5775 hands with no pair. 
