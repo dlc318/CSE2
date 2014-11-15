@@ -33,7 +33,7 @@ Hearts:   5
 Spades:   J 
 
 Go again? Enter 'y' or 'Y', anything else to quit- q
-  rank   freq of exactly one pair
+  rank    freq of exactly one pair
     A       312
     K       307
     Q       339
