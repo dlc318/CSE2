@@ -17,9 +17,9 @@ public class MatrixSorter{
         int allocate[][][] = new int[3][0][0];  //mat3d will be set equal to this array made of 
         
         for(int s = 0; s<3; s++) {
-            allocate[s] = new int[3+(2*s)][];
+            allocate[s] = new int[3+(2*s)][];   //allocates space to row according to the slab number
             for(int j = 0; j<allocate[s].length; j++) {
-                allocate[s][j] = new int[s+j+1];
+                allocate[s][j] = new int[s+j+1];    //allocates space to columns according to the row and slab number. 
                 for(int c = 0; c<allocate[s][j].length; c++) {
                     allocate[s][j][c] = 1 + (int) (Math.random() * 99); //assigns a value in range [1,99] inclusive. 
                 }
@@ -72,12 +72,12 @@ public class MatrixSorter{
         }
         
         for(int i = 1; i<mat3d.length; i++) {   //swaps the rows according to the smallest first column
-            int[] temp = mat3d[i];
-            int minColumn = mat3d[i][0];
-            int newRow = i;
-            while(newRow>0 && mat3d[newRow-1][0]>minColumn) {
-                mat3d[newRow] = mat3d[newRow-1];
-                newRow--;
+            int[] temp = mat3d[i];  //the current minimum row
+            int minColumn = mat3d[i][0];    //the current minimum first column value
+            int newRow = i; //the pointer for the minimum row
+            for(int row = i; row>0 && mat3d[row-1][0]>minColumn; row--) {
+                mat3d[newRow] = mat3d[newRow-1];    //swaps rows to place minimum
+                newRow--;   //goes to next row
             }
             mat3d[newRow] = temp;
         }
